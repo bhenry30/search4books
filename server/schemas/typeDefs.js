@@ -1,4 +1,4 @@
-const {gql} = require('apollo-server-express')
+const { gql } = require('apollo-server-express')
 
 const typeDefs = gql `
 type User {
@@ -7,6 +7,11 @@ type User {
     email: String
     bookCount: Int
     savedBooks: [Book]
+}
+
+type Auth {
+    token: ID!
+    user: User
 }
 
 type Book {
@@ -25,7 +30,6 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-}
 `
 
 module.exports = typeDefs
